@@ -74,7 +74,7 @@ bash run_base_gen_synstory.sh # set ice=True
 ### Continued-Pretraining (CPT)
 
 ```bash
-bash run_base_gen_synstory.sh # set ice=True
+bash run_clm_base_synstory.sh
 ```
 
 ### MEMIT
@@ -92,7 +92,7 @@ bash train_mend_syn_story_originalMend.sh
 # Evaluate hypernetwork
 bash run_edit_syn_story_original_mend.sh
 ```
-Similarly, `run_edit_ripple_edits_original_mend.sh`
+Similarly for RippleEdit `run_edit_ripple_edits_original_mend.sh`
 
 ## Ablation
 
