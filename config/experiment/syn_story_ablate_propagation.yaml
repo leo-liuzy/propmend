@@ -1,0 +1,7 @@
+# @package _global_
+
+task: syn_story_ablate_propagation
+dataset: syn_story_ablate_propagation
+cbase: 1.0
+heavy_outerloop: true
+train_prefix: "4K"

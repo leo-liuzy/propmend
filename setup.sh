@@ -1,0 +1,23 @@
+pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cu124
+pip install transformers
+pip install hydra-core
+pip install wandb
+pip install datasets
+pip install jsonlines
+pip install git+https://github.com/eric-mitchell/higher@master
+pip install spacy
+pip install einops
+pip install importlib-metadata
+pip install nltk
+pip install matplotlib
+pip install scikit-learn
+pip install sentence-transformers
+pip install openai
+pip install iopath
+pip install timm
+pip install ipython
+pip install pdbpp
+pip install anthropic
+pip install sqlitedict
+pip install overrides
+pip install peft

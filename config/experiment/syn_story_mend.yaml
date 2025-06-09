@@ -1,0 +1,6 @@
+# @package _global_
+
+task: syn_story_mend
+dataset: syn_story_mend
+cbase: 1.0
+train_prefix: "4K"

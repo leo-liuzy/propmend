@@ -1,0 +1,20 @@
+name: ${oc.env:PWD}/models/Qwen2.5-1.5B-eos-sft-template-format-curated-v1-lr2e-6-sample-10
+class_name: Qwen2ForCausalLM
+tokenizer_class: Qwen2Tokenizer
+tokenizer_name: ${oc.env:PWD}/models/Qwen2.5-1.5B-eos-sft-template-format-curated-v1-lr2e-6-sample-10
+inner_params:
+- model.layers.23.mlp.gate_proj.weight
+- model.layers.23.mlp.up_proj.weight
+- model.layers.23.mlp.down_proj.weight
+- model.layers.24.mlp.gate_proj.weight
+- model.layers.24.mlp.up_proj.weight
+- model.layers.24.mlp.down_proj.weight
+- model.layers.25.mlp.gate_proj.weight
+- model.layers.25.mlp.up_proj.weight
+- model.layers.25.mlp.down_proj.weight
+- model.layers.26.mlp.gate_proj.weight
+- model.layers.26.mlp.up_proj.weight
+- model.layers.26.mlp.down_proj.weight
+- model.layers.27.mlp.gate_proj.weight
+- model.layers.27.mlp.up_proj.weight
+- model.layers.27.mlp.down_proj.weight

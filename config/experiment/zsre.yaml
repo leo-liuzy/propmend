@@ -1,0 +1,5 @@
+# @package _global_
+
+task: zsre
+dataset: zsre
+cbase: 1.0
