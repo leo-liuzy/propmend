@@ -1,7 +1,7 @@
 # @package _global_
 
-task: ripple_edits
-dataset: ripple_edits
+task: ripple_edit
+dataset: ripple_edit
 cbase: 1.0
 heavy_outerloop: true
 all_propagation_in_outerloop: False # (default=False) if false, Relation_Specificity and Forgetfulness will be used for locality

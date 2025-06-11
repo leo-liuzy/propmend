@@ -2,15 +2,34 @@
 
 Authors: Zeyu Leo Liu, Greg Durrett, Eunsol Choi
 
-Please check out our work [here](./README.md) 📃
+Please check out our work [here](https://arxiv.org/abs/2506.08920) 📃
 
 <picture>
 <img src="./images/main-fig.png" alt="Method overview"/>
 </picture>
 <br/>
 
+## `Controlled RippledEdit`
+
+We introduce a new dataset called `Controlled RippleEdit`, which will allow a focused evaluation of our model’s knowledge propagation ability. We also design this dataset to evaluate out-of-domain performance, propagating along relations unseen during training, or with unseen entities.
+
+
+<picture>
+<img src="./images/data.png" alt="Data overview"/>
+</picture>
+<br/>
+
+
+### Data instance
+
+Each instance has a new fact $\mathbf{f}$ centering around a fake entity $\mathbf{s}_f$ and involving three real-world entities $o_1, o_2, o_3$. It also has a set of propagation questions $\{(\mathbf{q}_i, \mathbf{a}_i)\}^P_{i=1}$ built from P unique knowledge base relations (e.g., `capital_of`) associated with one of the real-world entities $(o_1, o_2, o_3)$. Instead of referring to the real world entity directly, the propagation question will refer to it using its relation to the fake entity $\mathbf{s}_f$ (e.g., *the country where Adam Jacobson was born*). Therefore, the LM must be able to combine its prior knowledge about real-world entities and the injected fake entity $\mathbf{s}_f$ to answer the question correctly.
+
+We also upload our dataset to [Huggingface 🤗](TBD)
+
 
 ## Running your first PropMEND experiment
+
+Below, we include how to train PropMEND on `Controlled RippledEdit`.
 
 ### Pre-requisite:
 * Download data from [Google Drive](tbd)
@@ -20,41 +39,20 @@ conda create -n propmend python=3.11
 bash setup.sh
 ```
 
-Now you are ready to run the first experiment
+Now you are ready to run your first experiment
 ```bash
 # Train hypernetwork
-bash run_sft_qa.sh
-bash run_sft_fmt.sh
-bash train_mend_syn_story.sh
-# this will automatically create a folder named after run id, like `outputs/2025-02-10_08-19-14_2641409766`
+bash scripts/run_sft_qa.sh # align base model to do QA 
+bash scripts/run_sft_qa_additional.sh # further reinforce model's knowledge on tested relations.
+bash scripts/train_propmend_controlled_ripple.sh # this will automatically create a folder named after run id, like `outputs/2025-02-10_08-19-14_2641409766`
 
 # Evaluate
-# first, modify run_edit_syn_story.sh to name the checekpoint and add run id.
-
-bash run_edit_syn_story.sh
+# first, modify run_edit_propmend_controlled_ripple.sh to name the checekpoint and add run id.
+bash scripts/run_edit_propmend_controlled_ripple.sh
 ```
 
-We also include scripts for running experiment with RippleEdit.
-```
-run_base_gen_ripple.sh
-```
+We also include scripts for running experiment with RippleEdit: `scripts/run_edit_propmend_ripple.sh`.
 
-
-## Dataset Description
-
-We present a new synthetic dataset that centers around entities and relationships that the model is familiar with.
-
-<picture>
-<img src="./images/data-fig.png" alt="Data overview"/>
-</picture>
-<br/>
-
-### Load dataset
-```bash
-from datasets import load_dataset
-
-ds = load_dataset("TBD")
-```
 
 ## Baselines
 
@@ -62,25 +60,25 @@ Below, we describe how to run baselines for our work.
 
 ### Base
 ```bash
-bash run_base_gen_synstory.sh # set ice=False
+bash scripts/run_base_generate_controlled_ripple.sh # set ice=False
 ```
-Similarly, `run_base_gen_ripple.sh`
+Similarly, `scripts/run_base_generate_ripple.sh`
 
 ### Prepend
 ```bash
-bash run_base_gen_synstory.sh # set ice=True
+bash scripts/run_base_generate_controlled_ripple.sh # set ice=True
 ```
 
 ### Continued-Pretraining (CPT)
 
 ```bash
-bash run_clm_base_synstory.sh
+bash scripts/run_cpt_controlled_ripple.sh
 ```
 
 ### MEMIT
 ```bash
 # ! You will need to make changes to EasyEdit (easyeditor/models/rome/layer_stats.py) to load data to calculate covariance matrix.
-bash run_memit_edit_syn_story.sh
+bash scripts/run_edit_memit_controlled_ripple.sh
 ```
 See configs in `EasyEdit_config/`.
 
@@ -88,26 +86,34 @@ See configs in `EasyEdit_config/`.
 ### MEND
 ```bash
 # Train hypernetwork
-bash train_mend_syn_story_originalMend.sh
+bash scripts/train_mend_controlled_ripple.sh
 # Evaluate hypernetwork
-bash run_edit_syn_story_original_mend.sh
+bash scripts/run_edit_mend_controlled_ripple.sh
 ```
-Similarly for RippleEdit `run_edit_ripple_edits_original_mend.sh`
+Similarly for RippleEdit `scripts/run_edit_mend_ripple.sh`
 
 ## Ablation
 
 We also provide code for our ablation study.
 
 ```bash
-bash train_mend_syn_story_ablation.sh
+bash scripts/train_propmend_controlled_ripple_ablation.sh
 ```
 
-Note: CPT ablation needs to be evaluated by `run_edit_syn_story_original_mend.sh`
+Note: CPT ablation needs to be evaluated by `scripts/run_edit_mend_controlled_ripple.sh`
 
 ## Citation
 
 If you found our work useful, please consider citing our work.
 
 ```
-TBD
+@misc{liu2025propmendhypernetworksknowledgepropagation,
+      title={PropMEND: Hypernetworks for Knowledge Propagation in LLMs}, 
+      author={Zeyu Leo Liu and Greg Durrett and Eunsol Choi},
+      year={2025},
+      eprint={2506.08920},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.08920}, 
+}
 ```

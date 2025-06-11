@@ -37,7 +37,7 @@ parser = HfArgumentParser((SFTConfig, CustomConfig))
 if custom_cfg.sft_stage == "qa":
     model_name_or_path = "Qwen/Qwen2.5-1.5B"
 else:
-    assert custom_cfg.sft_stage == "fmt"
+    assert custom_cfg.sft_stage == "qa-additional"
     os.makedirs(f"{vars.PROJ_DIR}/models", exist_ok=True)
     model_name_or_path = f"{vars.PROJ_DIR}/models/Qwen2.5-1.5B-eos-sft"
 
@@ -60,9 +60,9 @@ if custom_cfg.sft_stage == "qa":
     train_dataset = prepare_sft_text(args, load_jsonlines(f"{vars.DATA_DIR}/qa-sft/train.jsonl"), tokenizer)
     valid_dataset = prepare_sft_text(args, load_jsonlines(f"{vars.DATA_DIR}/qa-sft/valid.jsonl"), tokenizer)
 else:
-    assert custom_cfg.sft_stage == "fmt"
+    assert custom_cfg.sft_stage == "qa-additional"
     train_dataset = prepare_sft_text(
-        args, load_jsonlines(f"{vars.DATA_DIR}/fmt-sft/light_weight_sft_content_curated_v1_sample=10.jsonl"), tokenizer
+        args, load_jsonlines(f"{vars.DATA_DIR}/qa-additional-sft/light_weight_sft_content_curated_v1_sample=10.jsonl"), tokenizer
     )
     eval_dataset = None
 

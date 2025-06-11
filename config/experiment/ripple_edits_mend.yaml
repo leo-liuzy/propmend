@@ -1,5 +1,5 @@
 # @package _global_
 
-task: ripple_edits_mend
-dataset: ripple_edits_mend
+task: ripple_edit_mend
+dataset: ripple_edit_mend
 cbase: 1.0

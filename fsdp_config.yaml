@@ -1,0 +1,39 @@
+compute_environment: LOCAL_MACHINE
+# Should distributed operations be checked while running for errors? This can avoid timeout issues but will be slower.
+debug: false
+distributed_type: FSDP
+downcast_bf16: 'no'
+enable_cpu_affinity: false
+fsdp_config:
+  fsdp_sharding_strategy: FULL_SHARD
+  fsdp_activation_checkpointing: true
+  # model
+  fsdp_auto_wrap_policy: TRANSFORMER_BASED_WRAP
+  # weights prefetching
+  fsdp_forward_prefetch: true
+  # weights prefetching
+  fsdp_backward_prefetch: BACKWARD_PRE
+  # offload
+  fsdp_offload_params: True
+  # model loading
+  fsdp_cpu_ram_efficient_loading: true 
+  # efficient checkpointing
+  fsdp_state_dict_type: SHARDED_STATE_DICT 
+  # parameters syncing
+  fsdp_sync_module_states: true
+  # parameters summoning
+  fsdp_use_orig_params: true
+  
+  fsdp_transformer_layer_cls_to_wrap: LlamaDecoderLayer
+  # fsdp_transformer_layer_cls_to_wrap: Qwen2DecoderLayer
+machine_rank: 0
+main_training_function: main
+mixed_precision: bf16
+num_machines: 1
+num_processes: 1 # #GPU
+rdzv_backend: static
+same_network: true
+tpu_env: []
+tpu_use_cluster: false
+tpu_use_sudo: false
+use_cpu: false

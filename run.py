@@ -59,62 +59,62 @@ def run(config):
         val_set = ZsreDataset(
             tokenizer, f"{vars.DATA_DIR}/zsre/structured_zeroshot-dev-new_annotated_final.jsonl", config
         )
-    elif config.task == "qa" or config.task == "ripple_edits":
+    elif config.task == "qa" or config.task == "ripple_edit":
         add_padding(tokenizer, model)
-        from data_classes.ripple_edits import RippleEditsDataset
+        from data_classes.ripple_edit import RippleEditsDataset
 
-        assert hasattr(config, "train_set_size"), "ripple_edits config must be provided"
+        assert hasattr(config, "train_set_size"), "ripple_edit config must be provided"
         train_set = RippleEditsDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/ripple_edits/train.jsonl",
+            f"{vars.DATA_DIR}/ripple_edit/train.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
         val_set = RippleEditsDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/ripple_edits/valid.jsonl",
+            f"{vars.DATA_DIR}/ripple_edit/valid.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,
         )
         LOG.info(f"train_set size: {len(train_set)}")
         LOG.info(f"val_set size: {len(val_set)}")
-    elif config.task == "qa" or config.task == "ripple_edits_mend":
+    elif config.task == "qa" or config.task == "ripple_edit_mend":
         add_padding(tokenizer, model)
-        from data_classes.ripple_edits_mend import RippleEditsMENDDataset
+        from data_classes.ripple_edit_mend import RippleEditsMENDDataset
 
         train_set = RippleEditsMENDDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/ripple_edits/train_mend.jsonl",
+            f"{vars.DATA_DIR}/ripple_edit/train_mend.jsonl",
             config,
             max_length=tokenizer.model_max_length,
         )
         val_set = RippleEditsMENDDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/ripple_edits/valid_mend.jsonl",
+            f"{vars.DATA_DIR}/ripple_edit/valid_mend.jsonl",
             config,
             max_length=tokenizer.model_max_length,
         )
         LOG.info(f"train_set size: {len(train_set)}")
         LOG.info(f"val_set size: {len(val_set)}")
-    elif config.task == "qa" or config.task == "syn_story":
+    elif config.task == "qa" or config.task == "controlled_ripple_edit":
         add_padding(tokenizer, model)
-        from data_classes.syn_story import SynStoryDataset
+        from data_classes.controlled_ripple_edit import ControlledRippleEditDataset
 
         assert hasattr(config, "train_set_size"), "train_set_size must be provided"
         assert hasattr(config, "train_prefix"), "train_prefix must be provided"
         config.dataset += f"-{config.train_prefix}train"
-        train_set = SynStoryDataset(
+        train_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/train_text_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_text_data_id_entity152_rel31.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
-        val_set = SynStoryDataset(
+        val_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/valid_text_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_text_data_id_entity152_rel31.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,
@@ -122,44 +122,44 @@ def run(config):
         LOG.info(f"train_set size: {len(train_set)}")
         LOG.info(f"val_set size: {len(val_set)}")
         LOG.info(f"model_max_length: {tokenizer.model_max_length}")
-    elif config.task == "qa" or config.task == "syn_story_mend":
+    elif config.task == "qa" or config.task == "controlled_ripple_edit_mend":
         add_padding(tokenizer, model)
-        from data_classes.syn_story_mend import SynStoryMENDDataset
+        from data_classes.controlled_ripple_edit_mend import ControlledRippleEditMENDDataset
 
         config.dataset += f"-{config.train_prefix}train"
-        train_set = SynStoryMENDDataset(
+        train_set = ControlledRippleEditMENDDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/train_mend.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_mend.jsonl",
             config,
             max_length=tokenizer.model_max_length,
         )
-        val_set = SynStoryMENDDataset(
+        val_set = ControlledRippleEditMENDDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/valid_mend.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_mend.jsonl",
             config,
             max_length=tokenizer.model_max_length,
         )
         LOG.info(f"train_set size: {len(train_set)}")
         LOG.info(f"val_set size: {len(val_set)}")
         LOG.info(f"model_max_length: {tokenizer.model_max_length}")
-    elif config.task == "qa" or config.task == "syn_story_ablate_propagation":
+    elif config.task == "qa" or config.task == "controlled_ripple_edit_ablate_propagation":
         add_padding(tokenizer, model)
-        from data_classes.syn_story import SynStoryDataset
+        from data_classes.controlled_ripple_edit import ControlledRippleEditDataset
 
         assert hasattr(config, "train_set_size"), "train_set_size must be provided"
         assert hasattr(config, "train_prefix"), "train_prefix must be provided"
         
         config.dataset += f"-{config.train_prefix}train"
-        train_set = SynStoryDataset(
+        train_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/train_text_data_id_entity152_rel31_paraphrase-only.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_text_data_id_entity152_rel31_paraphrase-only.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
-        val_set = SynStoryDataset(
+        val_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/valid_text_data_id_entity152_rel31_paraphrase-only.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_text_data_id_entity152_rel31_paraphrase-only.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,
@@ -167,24 +167,24 @@ def run(config):
         LOG.info(f"train_set size: {len(train_set)}")
         LOG.info(f"val_set size: {len(val_set)}")
         LOG.info(f"model_max_length: {tokenizer.model_max_length}")
-    elif config.task == "qa" or config.task == "syn_story_ablate_cpt":
+    elif config.task == "qa" or config.task == "controlled_ripple_edit_ablate_cpt":
         add_padding(tokenizer, model)
-        from data_classes.syn_story_ablate_cpt import SynStorySFTDataset
+        from data_classes.controlled_ripple_edit_ablate_cpt import ControlledRippleEditSFTDataset
 
         assert hasattr(config, "train_set_size"), "train_set_size must be provided"
         assert hasattr(config, "train_prefix"), "train_prefix must be provided"
         
         config.dataset += f"-{config.train_prefix}train"
-        train_set = SynStorySFTDataset(
+        train_set = ControlledRippleEditSFTDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/train_structure_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_structure_data_id_entity152_rel31.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
-        val_set = SynStorySFTDataset(
+        val_set = ControlledRippleEditSFTDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_story_propagation/valid_structure_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_structure_data_id_entity152_rel31.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,

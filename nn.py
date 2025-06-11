@@ -204,4 +204,4 @@ if __name__ == "__main__":
     assert torch.allclose(y1, x)
     assert torch.allclose(y2, x)
     assert not torch.allclose(y3, x)
-    import pdb; pdb.set_trace()  # fmt: skip
+    import pdb; pdb.set_trace()  # qa-additional: skip

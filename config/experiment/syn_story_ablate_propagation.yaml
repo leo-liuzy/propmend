@@ -1,7 +1,7 @@
 # @package _global_
 
-task: syn_story_ablate_propagation
-dataset: syn_story_ablate_propagation
+task: controlled_ripple_edit_ablate_propagation
+dataset: controlled_ripple_edit_ablate_propagation
 cbase: 1.0
 heavy_outerloop: true
 train_prefix: "4K"
