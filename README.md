@@ -22,7 +22,7 @@ We introduce a new dataset called `Controlled RippleEdit`, which will allow a fo
 
 ### Data instance
 
-Each instance has a new fact $\mathbf{f}$ centering around a fake entity $\mathbf{s}_f$ and involving three real-world entities $o_1, o_2, o_3$. It also has a set of $P$ propagation questions $\{(\mathbf{q}_i, \mathbf{a}_i)\}$ built from P unique knowledge base relations (e.g., `capital_of`) associated with one of the real-world entities $(o_1, o_2, o_3)$. Instead of referring to the real world entity directly, the propagation question will refer to it using its relation to the fake entity $\mathbf{s}_f$ (e.g., *the country where Adam Jacobson was born*). Therefore, the LM must be able to combine its prior knowledge about real-world entities and the injected fake entity $\mathbf{s}_f$ to answer the question correctly.
+Each instance has a new fact $\mathbf{f}$ centering around a fake entity $\mathbf{s}_f$ and involving three real-world entities $o_1, o_2, o_3$. It also has a set of $P$ propagation questions $\{(\mathbf{q}_i, \mathbf{a}_i)\}$ built from $P$ unique knowledge base relations (e.g., `capital_of`) associated with one of the real-world entities $(o_1, o_2, o_3)$. Instead of referring to the real world entity directly, the propagation question will refer to it using its relation to the fake entity $\mathbf{s}_f$ (e.g., *the country where Adam Jacobson was born*). Therefore, the LM must be able to combine its prior knowledge about real-world entities and the injected fake entity $\mathbf{s}_f$ to answer the question correctly.
 
 We also upload our dataset to [Huggingface 🤗](leo-liuzy/Controlled-RippleEdit)
 
