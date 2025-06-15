@@ -5,7 +5,7 @@ Authors: Zeyu Leo Liu, Greg Durrett, Eunsol Choi
 Please check out our work [here](https://arxiv.org/abs/2506.08920) 📃
 
 <picture>
-<img src="./images/main-fig.png" alt="Method overview"/>
+<img src="./images/main.png" alt="Method overview"/>
 </picture>
 <br/>
 
@@ -35,7 +35,7 @@ Our released data is only a subset of entities and relations we arrived at. We r
 Below, we include how to train PropMEND on `Controlled RippledEdit`.
 
 ### Pre-requisite:
-* Download data from [Google Drive](https://drive.google.com/file/d/1aAFEmExLRd8MH4jIcVaBB5kJQ3aqP3NP/view?usp=share_link)
+* Download data from [Google Drive](https://drive.google.com/file/d/1b7MH6hqFcAZqM8pcbTvOKtEJTdRT1TyF/view?usp=share_link)
 * Environment setup:
 ```bash
 conda create -n propmend python=3.11
