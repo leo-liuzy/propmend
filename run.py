@@ -107,14 +107,14 @@ def run(config):
         config.dataset += f"-{config.train_prefix}train"
         train_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_text_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_data_id.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
         val_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_text_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_data_id.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,
@@ -152,14 +152,14 @@ def run(config):
         config.dataset += f"-{config.train_prefix}train"
         train_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_text_data_id_entity152_rel31_paraphrase-only.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_text_data_id_paraphrase-only.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
         val_set = ControlledRippleEditDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_text_data_id_entity152_rel31_paraphrase-only.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_text_data_id_paraphrase-only.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,
@@ -177,14 +177,14 @@ def run(config):
         config.dataset += f"-{config.train_prefix}train"
         train_set = ControlledRippleEditSFTDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_structure_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/train_data_id.jsonl",
             config,
             size=config.train_set_size,
             max_length=tokenizer.model_max_length,
         )
         val_set = ControlledRippleEditSFTDataset(
             tokenizer,
-            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_structure_data_id_entity152_rel31.jsonl",
+            f"{vars.DATA_DIR}/{config.train_prefix}_controlled_ripple_edit/valid_data_id.jsonl",
             config,
             max_length=tokenizer.model_max_length,
             is_eval=True,

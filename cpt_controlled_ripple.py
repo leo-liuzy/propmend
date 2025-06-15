@@ -218,28 +218,28 @@ os.makedirs(exp_save_dir, exist_ok=True)
 if custom_cfg.test_data == "4K_test_id":
     individual_result_save_dir = f"{exp_save_dir}/individual_results_{custom_cfg.text_data}_id"
     cpt_dev_dataset = load_jsonlines(
-        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_id_entity152_rel31.jsonl"
+        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_id.jsonl"
     )
 elif custom_cfg.test_data == "4K_test_ood":
     individual_result_save_dir = f"{exp_save_dir}/individual_results_{custom_cfg.text_data}_ood"
     cpt_dev_dataset = load_jsonlines(
-        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_ood_entity37_rel7.jsonl"
+        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood.jsonl"
     )
 elif custom_cfg.test_data == "4K_test_ood-entity":
     individual_result_save_dir = f"{exp_save_dir}/individual_results_{custom_cfg.text_data}_ood-entity"
     cpt_dev_dataset = load_jsonlines(
-        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_ood-entity_entity37_rel31.jsonl"
+        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood-entity.jsonl"
     )
 
 elif custom_cfg.test_data == "4K_test_ood-relation":
     individual_result_save_dir = f"{exp_save_dir}/individual_results_{custom_cfg.text_data}_ood-relation"
     cpt_dev_dataset = load_jsonlines(
-        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_ood-relation_entity152_rel7.jsonl"
+        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood-relation.jsonl"
     )
 elif custom_cfg.test_data == "profiling":
     individual_result_save_dir = f"{exp_save_dir}/individual_results_{custom_cfg.text_data}_profiling"
     cpt_dev_dataset = load_jsonlines(
-        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_id_entity152_rel31.jsonl"
+        f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_id.jsonl"
     )
     cpt_dev_dataset = cpt_dev_dataset[:50]
 else:

@@ -96,31 +96,31 @@ def run(config):
 
     if config.test_data == "4K_test_id":
         edit_dev_dataset = load_jsonlines(
-            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_structure_data_id_entity152_rel31.jsonl"
+            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_id.jsonl"
         )
         config.val_steps = 500
 
     elif config.test_data == "4K_test_ood":
         edit_dev_dataset = load_jsonlines(
-            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_structure_data_ood_entity37_rel7.jsonl"
+            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood.jsonl"
         )
         config.val_steps = 350
         assert len(edit_dev_dataset) == config.val_steps
     elif config.test_data == "4K_test_ood-relation":
         edit_dev_dataset = load_jsonlines(
-            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_structure_data_ood-relation_entity152_rel7.jsonl"
+            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood-relation.jsonl"
         )
         config.val_steps = 350
         assert len(edit_dev_dataset) == config.val_steps
     elif config.test_data == "4K_test_ood-entity":
         edit_dev_dataset = load_jsonlines(
-            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_structure_data_ood-entity_entity37_rel31.jsonl"
+            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood-entity.jsonl"
         )
         config.val_steps = 350
         assert len(edit_dev_dataset) == config.val_steps
     elif config.test_data == "profile":
         edit_dev_dataset = load_jsonlines(
-            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_structure_data_id_entity152_rel31.jsonl"
+            f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_id.jsonl"
         )
         config.val_steps = 50
         edit_dev_dataset = edit_dev_dataset[:config.val_steps]

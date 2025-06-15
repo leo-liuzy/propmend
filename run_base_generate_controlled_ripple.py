@@ -156,23 +156,23 @@ def run(config):
 
     assert hasattr(config, "test_data")
     if config.test_data == "4K_test_id":
-        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_id_entity152_rel31.jsonl")
+        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_id.jsonl")
         config.val_steps = 500
         assert len(val_data) == config.val_steps
     elif config.test_data == "4K_test_ood":
-        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_ood_entity37_rel7.jsonl")
+        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood.jsonl")
         config.val_steps = 350
         assert len(val_data) == config.val_steps
     elif config.test_data == "4K_test_ood-relation":
-        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_ood-relation_entity152_rel7.jsonl")
+        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood-relation.jsonl")
         config.val_steps = 350
         assert len(val_data) == config.val_steps
     elif config.test_data == "4K_test_ood-entity":
-        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_ood-entity_entity37_rel31.jsonl")
+        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_ood-entity.jsonl")
         config.val_steps = 350
         assert len(val_data) == config.val_steps
     elif config.test_data == "profile":
-        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_text_data_id_entity152_rel31.jsonl")
+        val_data = utils.load_jsonlines(f"{vars.DATA_DIR}/4K_controlled_ripple_edit/test_data_id.jsonl")
         config.val_steps = 50
         val_data = val_data[: config.val_steps]
         assert len(val_data) == config.val_steps
