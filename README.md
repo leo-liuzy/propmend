@@ -2,7 +2,7 @@
 
 Authors: Zeyu Leo Liu, Greg Durrett, Eunsol Choi
 
-Please check out our work [here](https://arxiv.org/abs/2506.08920) 📃
+<!-- Please check out our work [here](https://arxiv.org/abs/2506.08920) 📃-->
 
 <picture>
 <img src="./images/main.png" alt="Method overview"/>
@@ -109,6 +109,7 @@ Note: CPT ablation needs to be evaluated by `scripts/run_edit_mend_controlled_ri
 
 If you found our work useful, please consider citing our work.
 
+<!--
 ```
 @misc{liu2025propmendhypernetworksknowledgepropagation,
       title={PropMEND: Hypernetworks for Knowledge Propagation in LLMs}, 
@@ -120,3 +121,4 @@ If you found our work useful, please consider citing our work.
       url={https://arxiv.org/abs/2506.08920}, 
 }
 ```
+-->
